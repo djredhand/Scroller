@@ -46,7 +46,7 @@ var m = Math,
 	END_EV = hasTouch ? 'touchend' : 'mouseup',
 	CANCEL_EV = hasTouch ? 'touchcancel' : 'mouseup',
 	WHEEL_EV = vendor == 'Moz' ? 'DOMMouseScroll' : 'mousewheel',
-
+	
 	// Helpers
 	trnOpen = 'translate' + (has3d ? '3d(' : '('),
 	trnClose = has3d ? ',0)' : ')',
@@ -258,6 +258,7 @@ iScroll.prototype = {
 	},
 	
 	_pos: function (x, y) {
+
 		x = this.hScroll ? x : 0;
 		y = this.vScroll ? y : 0;
 
@@ -388,6 +389,7 @@ iScroll.prototype = {
 			newY = that.y + deltaY,
 			c1, c2, scale,
 			timestamp = e.timeStamp || Date.now();
+			
 
 		if (that.options.onBeforeScrollMove) that.options.onBeforeScrollMove.call(that, e);
 
@@ -400,7 +402,8 @@ iScroll.prototype = {
 			that.zoomed = true;
 
 			scale = 1 / that.touchesDistStart * that.touchesDist * this.scale;
-
+			
+			
 			if (scale < that.options.zoomMin) scale = 0.5 * that.options.zoomMin * Math.pow(2.0, scale / that.options.zoomMin);
 			else if (scale > that.options.zoomMax) scale = 2.0 * that.options.zoomMax * Math.pow(0.5, that.options.zoomMax / scale);
 
@@ -417,7 +420,7 @@ iScroll.prototype = {
 
 		that.pointX = point.pageX;
 		that.pointY = point.pageY;
-
+		
 		// Slow down if outside of the boundaries
 		if (newX > 0 || newX < that.maxScrollX) {
 			newX = that.options.bounce ? that.x + (deltaX / 2) : newX >= 0 || that.maxScrollX >= 0 ? 0 : that.maxScrollX;
@@ -972,6 +975,7 @@ iScroll.prototype = {
 		}
 
 		that._startAni();
+		console.log(x);
 	},
 
 	scrollToElement: function (el, time) {
@@ -1007,6 +1011,7 @@ iScroll.prototype = {
 			that.currPageY = pageY;
 			x = that.pagesX[pageX];
 			y = that.pagesY[pageY];
+			
 		} else {
 			x = -that.wrapperW * pageX;
 			y = -that.wrapperH * pageY;
@@ -1015,6 +1020,7 @@ iScroll.prototype = {
 		}
 
 		that.scrollTo(x, y, time);
+		
 	},
 
 	disable: function () {
