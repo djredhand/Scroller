@@ -11,8 +11,8 @@ body {
 }
 
 #scroll_wrapper {
-	width:300px;
-	height:160px;
+	width:825px;
+	height:580px;
 
 	float:left;
 	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
@@ -28,7 +28,7 @@ body {
 }
 
 #scroll_scroller {
-	width:2100px;
+	width:5775px;
 	height:100%;
 	float:left;
 	padding:0;
@@ -51,7 +51,7 @@ body {
 	-o-box-sizing:border-box;
 	box-sizing:border-box;
 	display:block; float:left;
-	width:300px; height:160px;
+	width:825px; height:580px;
 	text-align:center;
 	font-family:georgia;
 	font-size:18px;
@@ -59,7 +59,7 @@ body {
 }
 
 #scroll_nav {
-	width:300px;
+	width:825px;
 }
 
 #scroll_prev, #scroll_next {
@@ -88,7 +88,6 @@ body {
 }
 
 #scroll_indicator > li {
-	text-indent:-9999em;
 	cursor: pointer;
 	width:8px; height:18px;
 	-webkit-border-radius:14px;
