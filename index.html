@@ -6,14 +6,12 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>iScroll demo: Carousel</title>
-<script type="text/javascript" src="jq.js"></script>
-<script type="text/javascript" src="iscroll.js"></script>
-<link href="style.css" rel="stylesheet" media="screen">
+<link href="scrollStyle.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<div id="wrapper">
-	<div id="scroller">
-		<ul id="thelist">
+<div id="scroll_wrapper">
+	<div id="scroll_scroller">
+		<ul id="scroll_thelist">
 			<li><strong>1.</strong></li>
 			<li><strong>2.</strong></li>
 			<li><strong>3.</strong></li>
@@ -24,9 +22,9 @@
 		</ul>
 	<!--end #scroller--></div>
 <!--end #wrapper--></div>
-<div id="nav">
-	<div id="prev">&larr; prev</div>
-	<ul id="indicator">
+<div id="scroll_nav">
+	<div id="scroll_prev">&larr; prev</div>
+	<ul id="scroll_indicator">
 		<li class="active">1</li>
 		<li>2fgdfgtdgv</li>
 		<li>3</li>
@@ -35,72 +33,10 @@
 		<li>6</li>
 		<li>7</li>
 	</ul>
-	<div id="next">next &rarr;</div>
+	<div id="scroll_next">next &rarr;</div>
 </div>
-<script type="text/javascript">
-
-jQuery(document).ready(function(jQuery){
-function init(){
-	loaded();
-	var myScroll;
-
-	function loaded() {
-		myScroll = new iScroll('wrapper', {
-			snap: true,
-			momentum: false,
-			hScrollbar: false,
-			onScrollEnd: function () {
-				document.querySelector('#indicator > li.active').className = '';
-				document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-			}
-		 });
-	}
-	//document.addEventListener('DOMContentLoaded', loaded, false);
-	
-	$('#indicator li').click(function(){
-		var li = $(this);
-		myScroll.goToPage(li.prevAll().length, li);
-		
-		return false;
-	});
-	$('#next').click(function(){
-		var activeItem = $('ul#indicator li.active').prevAll().length;
-		myScroll.scrollToPage( activeItem + 1 , 0);
-		console.log(myScroll.x);
-		//myScroll.scrollToPage('next', 0);
-		return false;
-	});
-	$('#prev').click(function(){
-		var activeItem = $('ul#indicator li.active').prevAll().length;
-		myScroll.scrollToPage( activeItem - 1 , 0);
-		console.log(myScroll.x);
-		//myScroll.scrollToPage('prev', 0);
-		return false;
-	})
-	
-	/*
-	* Let create the goToPage Function2
-	*/
-	
-	iScroll.prototype.goToPage = function(thumbClicked, li){
-		// get the size of the frame and multiply it by the index of the frame 
-		var frame = $('ul#thelist').children()[thumbClicked];
-		var frameWidth = $(frame).width() + 20;
-		$('#scroller').css({
-			webkitTransform: 'translate3d(-' + frameWidth * thumbClicked + 'px, 0px, 0px) scale(1)'
-		});
-		$('ul#indicator li.active').attr('class', '');
-		$(li).toggleClass('active');
-		myScroll.currentPage = thumbClicked;
-		
-		myScroll.x = frameWidth * thumbClicked;
-		console.log(myScroll.x);
-		myScroll.scrollToPage( thumbClicked, li);
-	}
-	
-}//end init
-init()
-})
-</script>
+<script type="text/javascript" src="jq.js"></script>
+<script type="text/javascript" src="iscroll.js"></script>
+<script src="custom.js" type="text/javascript"></script>
 </body>
 </html>

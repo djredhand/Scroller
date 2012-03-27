@@ -975,7 +975,6 @@ iScroll.prototype = {
 		}
 
 		that._startAni();
-		console.log(x);
 	},
 
 	scrollToElement: function (el, time) {
