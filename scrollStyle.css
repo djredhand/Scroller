@@ -18,12 +18,6 @@ body {
 	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
 	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
 	overflow:hidden;
-
-	background:#aaa;
-	-webkit-border-radius:10px;
-	-moz-border-radius:10px;
-	-o-border-radius:10px;
-	border-radius:10px;
 	background:#e3e3e3;
 }
 
@@ -63,17 +57,20 @@ body {
 }
 
 #scroll_prev, #scroll_next {
-	float:left;
 	font-weight:bold;
 	font-size:14px;
 	padding:5px 0;
 	width:80px;
 	cursor: pointer;
+	position: absolute;
+	height:600px;
 }
-
+#scroll_prev:hover, #scroll_next:hover {
+	background:#d1d1d1
+}
 #scroll_next {
-	float:right;
 	text-align:right;
+	left: 744px;
 }
 
 #scroll_indicator, #scroll_indicator > li {
@@ -83,17 +80,13 @@ body {
 }
 
 #scroll_indicator {
-	width:110px;
+	width:635px;
 	padding:12px 0 0 30px;
 }
 
 #scroll_indicator > li {
 	cursor: pointer;
-	width:8px; height:18px;
-	-webkit-border-radius:14px;
-	-moz-border-radius:14px;
-	-o-border-radius:14px;
-	border-radius:14px;
+	width:30px; height:30px;
 	background:#ddd;
 	overflow:hidden;
 	margin-right:4px;
